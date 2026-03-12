@@ -1,0 +1,81 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { shouldShowLiveDemo } from '../utils/url';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, description, thumbnail, links } = project.data;
+
+const showLiveDemo = shouldShowLiveDemo(links?.live_demo);
+---
+
+<article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 p-5 flex flex-col gap-4">
+  {/* Top Section: Thumbnail on the left, Text on the right */}
+  <div class="flex flex-row gap-6 items-start">
+    
+    {/* 1) Smaller thumbnail */}
+    <div class="w-48 h-32 flex-shrink-0 overflow-hidden bg-gray-100 rounded-md shadow-sm">
+      <img
+        src={thumbnail}
+        alt={title}
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    {/* 2) Project title and description on the right */}
+    <div class="flex-1 min-w-0">
+      <h2 class="text-xl font-bold text-gray-900 mb-2">{title}</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">{description}</p>
+    </div>
+  </div>
+
+  {/* 3) Links separated by blank spaces and distributed evenly across a line */}
+  <div class="w-full flex flex-row justify-evenly items-center pt-3 mt-1 border-t border-gray-100">
+    {links?.code && (
+      <a
+        href={links.code}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm font-medium text-gray-800 hover:text-gray-600 hover:underline transition-colors"
+      >
+        Code
+      </a>
+    )}
+
+    {links?.slides && (
+      <a
+        href={links.slides}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm font-medium text-gray-800 hover:text-gray-800 hover:underline transition-colors"
+      >
+        Slides
+      </a>
+    )}
+
+    {links?.video && (
+      <a
+        href={links.video}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm font-medium text-gray-800 hover:text-gray-800 hover:underline transition-colors"
+      >
+        Video
+      </a>
+    )}
+
+    {showLiveDemo && links?.live_demo && (
+      <a
+        href={links.live_demo}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm font-medium text-gray-800 hover:text-gray-800 hover:underline transition-colors"
+      >
+        Live Demo
+      </a>
+    )}
+  </div>
+</article>

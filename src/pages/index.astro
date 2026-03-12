@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = await getCollection('projects');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSF - Agent Demo Archive</title>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <h1 class="text-3xl font-bold text-gray-900">DSF Agent Demo Archive</h1>
+    </div>
+  </header>
+
+  <Layout>
+    {projects.length === 0 ? (
+      <div class="text-center py-12">
+        <p class="text-gray-500 text-lg">No projects available yet.</p>
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    )}
+  </Layout>
+
+  <footer class="bg-white shadow-sm mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <p class="text-center text-gray-500 text-sm">
+        DSF Agent Demo Archive
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
