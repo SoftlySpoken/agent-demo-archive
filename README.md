@@ -22,7 +22,7 @@ Before you begin, ensure you have the following installed on your machine:
 Since this is a private repository, you do not need to fork it. Clone the repository directly to your local machine, and then create a new feature branch for your project submission:
 
 ```bash
-git clone [https://github.com/SoftlySpoken/agent-demo-archive](https://github.com/SoftlySpoken/agent-demo-archive)
+git clone https://github.com/SoftlySpoken/agent-demo-archive
 cd agent-demo-archive
 git checkout -b feature/your-name-project
 npm install
