@@ -1,10 +1,10 @@
 ---
 title: "Travel Agent"
 description: "A clarification-first travel planning app with a React frontend and FastAPI backend, supporting multi-model itinerary generation, route mapping, budget summaries, and trip history persistence."
-thumbnail: "/images/travelAgent.png"
+thumbnail: "/images/travel-agent.png"
 links:
   code: "https://github.com/junle-chen/travelAgent"
-  slides: "/slides/travelAgent.pdf"
+  slides: "/slides/travel-agent.pdf"
   live_demo: "http://localhost:5173/"
 ---
 
